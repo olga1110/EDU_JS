@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+
+
+        window.onload = function () {
+
+           var button_1 = document.getElementById('button_1');
+           var content = document.getElementById('content');
+           button_1.addEventListener('click', function () {
+               if (content.classList.contains('hide')){
+                    content.classList.remove('hide');
+            this.innerText = 'Скрыть описание';
+                } else {
+                    content.classList.add('hide');
+                   this.innerText = 'Показать описание';
+               }
+            });
+
+            function changePic(event) { 
+                var bigDiv = document.getElementById('big');
+                bigDiv.innerHTML = '';
+                var smallSrc = event.currentTarget.getAttribute('src');
+
+                var newImg = document.createElement('img');
+                newImg.src = smallSrc
+                bigDiv.appendChild(newImg);
+            }
+
+
+            var img = document.getElementsByTagName('img');
+            for (var i = 0; i < img.length; i++) {
+                img[i].onclick = changePic;
+            }
+
+        }
+    </script>
+    <link rel="stylesheet" href="picture_style.css">
+</head>
+<body>
+<div id="big"></div>
+<div id="gallary">
+    <img src="img/image_1.jpg" alt="furniture" id="image_1">
+    <img src="img/image_2.jpg" alt="furniture" id="image_2">
+    <img src="img/image_3.jpg" alt="furniture" id="image_3">
+</div>
+
+<button id="button_1">Показать описание</button>
+<div id="content" class="hide">
+    <p>Подробное описание товара. Кухонная мебель</p>
+</div>
+</body>
+</html>
