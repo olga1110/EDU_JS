@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src="menu.js"></script>
+    <script src="scroll.js"></script>
+    <script>
+      window.onload = function() {
+        var menuSubItem31 = new MenuSubItem('/catalog/tables','Столы');
+        var menuSubItem32 = new MenuSubItem('/catalog/sofas','Диваны');
+        var menuSubItem33 = new MenuSubItem('/catalog/sets','Кухонные гарнитуры');
+
+        var menuItem1 = new MenuItem('/', 'Главная', []);
+        var menuItem2 = new MenuItem('/about', 'О нас', []);
+        var menuItem3 = new MenuItem('/catalog', 'Каталог', [
+            menuSubItem31, menuSubItem32, menuSubItem33
+        ]);
+
+        var menu = new Menu('menu', 'menu', [
+          menuItem1, menuItem2, menuItem3
+        ]);
+
+        document.body.appendChild(menu.render());
+      }
+    </script>
+    <script src="../Lesson-2/scroll.js"></script>
+  </head>
+  <body></body>
+</html>
