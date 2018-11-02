@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        (function($) {
+            $(function() {
+        $('#component').draggable({
+            axis:'x',
+            cursor: 'move',
+            helper: function (event) {
+                return $('<div/>').text('Интернет-магазин Cozy kitchen');
+            },
+            revert: true
+        });
+        $('#component2').draggable();
+        $('#component2').resizable({animate:true});
+
+        $('#list').sortable();
+        $('#list').selectable();
+
+        $('#area').droppable({
+            accept : "#component2",
+            over: function() {
+                $('#area').css('background', 'green');
+                },
+            drop: function () {
+                $('#component2').css('background', 'yellow');
+            }
+        })
+        $('#accordion').accordion();
+        $('#tabs').tabs();
+        $('#calendar').datepicker({
+            firstDay: 1,
+            monthNames :['Январь' , 'Февраль' , 'Март' , 'Апрель' , 'Май' , 'Июнь' , 'Июль' , 'Август' , 'Сентябрь' , 'Октябрь'
+                , 'Ноябрь' , 'Декабрь'],
+            dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+            dateFormat: 'dd.mm.yy'
+        });
+        $('#component').animate({backgroundColor: '#454545'}, 10000);
+        $('#component3').effect('pulsate', 10000);
+        $('#component2').effect('highliqht',5000);
+        $('#component3').draggable();
+
+        $("#slider").slider();
+
+            })
+        })(jQuery)
+    </script>
+    <style>
+        .component{
+            margin: 20px;
+             background: lightseagreen;
+             width:100px;
+             height:100px;
+         }
+        .component2{
+            margin: 20px;
+            background: darkslateblue;
+            width:200px;
+            height:200px;
+        }
+        .component3{
+            margin: 20px;
+            background: yellowgreen;
+            width:100px;
+            height:100px;
+        }
+
+        .area{
+            margin: 50px;
+            background: indianred;
+            width: 400px;
+            height: 400px;
+        }
+
+    </style>
+</head>
+<body>
+<h2>Календарь</h2>
+<input id="calendar"/>
+
+<div id="component2" class="component2">Перетащите элемент или измените размер</div>
+<div id="component" class="component">Перетащите для получения подсказки</div>
+<div id="component3" class="component3">Анимация_pulsate</div>
+
+<h1>Задайте свой порядок для меню</h1>
+<ul id="list">
+    <li>list_1</li>
+    <li>list_2</li>
+    <li>list_3</li>
+</ul>
+
+<div id="area" class="area"></div>
+<h2>Аккордион</h2>
+<div id="accordion">
+    <h2>
+        <a href="#content1">Заголовок 1</a>
+    </h2>
+    <div id="content1">Содержимое 1</div>
+
+    <h2>
+        <a href="#content2">Заголовок 2</a>
+    </h2>
+    <div id="content2">Содержимое 2</div>
+
+    <h2>
+        <a href="#content3">Заголовок 3</a>
+    </h2>
+    <div id="content3">Содержимое 3</div>
+
+
+</body>
+</html>

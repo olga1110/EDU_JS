@@ -3,40 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="picture_style.css">
     <script>
-
-
         window.onload = function () {
-
-           var button_1 = document.getElementById('button_1');
-           var content = document.getElementById('content');
-           button_1.addEventListener('click', function () {
-               if (content.classList.contains('hide')){
+            var button_1 = document.getElementById('button_1');
+            var content = document.getElementById('content');
+            button_1.addEventListener('click', function () {
+                if (content.classList.contains('hide')) {
                     content.classList.remove('hide');
-            this.innerText = 'Скрыть описание';
+                    this.innerText = 'Скрыть описание';
                 } else {
                     content.classList.add('hide');
-                   this.innerText = 'Показать описание';
-               }
+                    this.innerText = 'Показать описание';
+                }
             });
 
-            function changePic(event) { 
+            function changePic(event) {
                 var bigDiv = document.getElementById('big');
                 bigDiv.innerHTML = '';
                 var smallSrc = event.currentTarget.getAttribute('src');
-
                 var newImg = document.createElement('img');
-                newImg.src = smallSrc
+                newImg.src = smallSrc;
                 bigDiv.appendChild(newImg);
             }
-
 
             var img = document.getElementsByTagName('img');
             for (var i = 0; i < img.length; i++) {
                 img[i].onclick = changePic;
             }
-
         }
     </script>
     <link rel="stylesheet" href="picture_style.css">
