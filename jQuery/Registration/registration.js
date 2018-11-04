@@ -35,7 +35,21 @@
 
     };
 
-    $('#dialog').dialog({ autoOpen: false });
+    $('#dialog').dialog({ autoOpen: false,
+            show: {
+                effect: 'drop',
+                duration: 500
+            },
+            hide: {
+                effect: 'scale',
+                duration: 500
+            },
+            draggable: true,
+            title: 'Обнаружены ошибки!!!',
+            close: function (event, ui) {
+                $(this).remove()
+            }
+        });
         $('#registr_button').on('click', function () {
             // $('.form_field').filter(function (index) {
             //     console.log(validators[this.id]);
@@ -83,7 +97,7 @@
         })
 
 
-     
+
 
     })
 })(jQuery)
