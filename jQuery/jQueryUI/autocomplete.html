@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        (function($) {
+            $(function() {
+                var tags = [ "Диваны", "Столы", "Стулья", "Гарнитуры"];
+                $( "#autocomplete" ).autocomplete({
+                    source: function( request, response ) {
+                        var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+                        response( $.grep( tags, function( item ){
+                            return matcher.test( item );
+                        }) );
+                    }
+                });
+                  })
+        })(jQuery)
+    </script>
+    <style>
+
+
+    </style>
+</head>
+<body>
+<label for="autocomplete">Введите категорию товара: </label>
+<input id="autocomplete">
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        (function ($) {
+            $(function () {
+                $('#tabs').tabs();
+
+                $('#dialog').dialog({
+                    autoOpen: false, buttons: {
+                        'Перейти к каталогу': function () {
+                            $(this).dialog('close');
+                            alert('На нашем сайте вы найдете лучшие модули по лучшим ценам! Приятного просмотра каталога!');
+                        },
+                        'Перейти к индивидуальному заказу': function () {
+                            $(this).dialog('close');
+                            alert('Наши специалисты подготовят для Вас уникальное предложение!');
+                        }
+                    }
+                });
+
+
+                $('#choose_but').click(function () {
+                    $('#dialog').dialog('open');
+                })
+                $ ('#slider').slider();
+            })
+        })(jQuery)
+    </script>
+    <style>
+        .component {
+            background: lightseagreen;
+            width: 100px;
+            height: 100px;
+        }
+
+        .component2 {
+            background: darkslateblue;
+            width: 200px;
+            height: 200px;
+        }
+
+        .component3 {
+            background: yellowgreen;
+            width: 100px;
+            height: 100px;
+        }
+
+        .area {
+            margin: 50px;
+            background: indianred;
+            width: 400px;
+            height: 400px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="tabs">
+    <ul>
+        <li><a href="#content_tabs1">Вкладка 1</a></li>
+        <li><a href="#content_tabs2">Вкладка 2</a></li>
+        <li><a href="#content_tabs3">Вкладка 3</a></li>
+    </ul>
+    <div id="content_tabs1">Контент1</div>
+    <div id="content_tabs2">Контент2</div>
+    <div id="content_tabs3">Контент3</div>
+</div>
+</div>
+
+<div id="dialog" title="Ваш выбор">
+    <p> Каталог или индивидуальный заказ??? </p>
+</div>
+
+<button id="choose_but">Далее</button>
+
+<div id = "slider" ></div>
+
+</body>
+</html>
+

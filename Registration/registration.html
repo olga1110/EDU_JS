@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <!--<script src="JS/registration.js"></script>-->
+    <link rel="stylesheet" href="style.css">
+    <script>
+
+        window.onload = function () {
+
+            var validators = {
+                login: /^[A-Za-z0-9]+$/i,
+                email: /^\w+@\w+\.\w+$/i,
+                tel: /^\+\d\d{3}\d{3}-\d{4}$/,
+                password: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/
+            };
+
+            // document.getElementById('email').addEventListener('change', function (event) {
+            //     var emailRegexp = /^\w+@\w+\.\w+$/;
+            //     if (!emailRegexp.test(event.target.value)) {
+            //         event.target.classList.add('invalid');
+            //     }
+            // });
+            //
+            // document.getElementById('tel').addEventListener('change', function (event) {
+            //     var telRegexp = /^\+\d\d{3}\d{3}-\d{4}$/;
+            //     if (!telRegexp.test(event.target.value)) {
+            //         event.target.classList.add('invalid');
+            //     }
+            // });
+
+            document.getElementById('registr_button').addEventListener('click', function() {
+
+                fields = document.getElementsByTagName('input');
+
+                alertMessage = 'Неверно заполнены поля: ';
+                var iserror = false;
+                for (var i = 0; i < fields.length; i++) {
+                    if(!validators[fields[i].id].test(fields[i].value)) {
+                        iserror = true;
+                        alertMessage += ' ' + fields[i].id + ',';
+                    }
+                }
+                if(iserror){
+                    alert(alertMessage);
+                }
+                else {
+                    if (document.getElementById('password').value != document.getElementById('password_confirm').value) {
+                        alert('Пароли не совпадают. Подтвердите повторно!');
+                    }
+                    else {
+                        alert('Регистрация выполнена успешно!');
+                    }
+                        }
+            });
+        }
+
+    </script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="content">
+        <header><img src="img/logo.jpg" alt="Логотип" class="logo">
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html" class="expand-catalog">Каталог</a>
+                        <div class="submenu"><a href="catalog/table.html">Обеденный стол</a> <a
+                                href="catalog/sofa.html">Диван для кухни</a> <a href="catalog/kitchen_set.html">Кухонный
+                            гарнитур</a></div>
+                    </li>
+                    <li><a href="Contacts.html">Контакты</a></li>
+                    <li><a href="registration.html">Регистрация</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="registr_form">
+            <!-- РЕГИСТРАЦИЯ -->
+            <h1><strong><em>Регистрация</em></strong></h1>
+            <form action="#" class="registration">
+                <fieldset>
+                    <input type="text" placeholder="Логин" id="login" title="Логин должен начинаться с буквы и
+                                                                    содержать только латинские буквы и цифры!">
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Email" id="email" title="">
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Телефон" id="tel">
+                    <br>
+                    <br>
+                    <input type="password" id="password" placeholder="Пароль"
+                    title="Пароль должен содержать хотя бы 1: латинскую букву в верхнем и нижнем регистрах,
+                          спецсимвол, число и быть не менее 6 символов">
+                    <br>
+                    <br>
+
+                    <input type="password" id="password_confirm" placeholder="Подтверждение пароля">
+                    <br>
+                    <br>
+
+                    <input type="file">
+                    <br>
+                    <br>
+                    <button id="registr_button"  type="submit" >Зарегистрироваться!</button>
+                </fieldset>
+            </form>
+        </main>
+    </div>
+    <footer>
+        <p>&copy;All rights reserved</p>
+    </footer>
+</div>
+</body>
+
+</html>
