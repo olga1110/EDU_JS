@@ -1,0 +1,78 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script>
+    function sendRequest(method, url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open(method, url, true);
+
+      xhr.timeout = 15000;
+      xhr.ontimeout = function() {
+        console.log('Время ожидания вышло!');
+      }
+
+      xhr.send();
+
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === XMLHttpRequest.DONE) {
+          if(xhr.status === 200) {
+            if(typeof callback === 'function') {
+              callback(null, JSON.parse(xhr.responseText));
+            }
+          } else {
+            callback(new Error('Получен ответ с ошибкой'))
+          }
+        }
+      }
+    }
+    function generateList(err, list) {
+      if(err) {
+        return;
+      } else {
+        var ul = document.createElement('ul');
+        for(var i = 0; i < list.length; i++) {
+          var li = document.createElement('li');
+          li.textContent = list[i].title;
+          ul.appendChild(li);
+        }
+        document.getElementById('result').appendChild(ul);
+      }
+    }
+    window.onload = function() {
+      document.getElementById('button').addEventListener('click', function() {
+        sendRequest('GET', 'https://jsonplaceholder.typicode.com/photos?_page=1&_limit=10', generateList);
+      });
+
+
+
+      document.getElementById('email').addEventListener('change', function(event) {
+        var emailRegexp = /^\w+@\w+\.\w+$/;
+        if(!emailRegexp.test(event.target.value)) {
+          event.target.classList.add('invalid');
+        }
+      });
+    }
+    var div = document.getElementById('wrapper');
+    if(div) {
+      div
+    }
+    
+    </script>
+
+</head>
+
+<body>
+  <input type="button" id="button" value="Send">
+  <div id="result">
+  </div>
+
+  <ul id="list">
+    <li data-id="1">Главная</li>
+    <li data-id="2">Каталог</li>
+    <li data-id="3">Контакты</li>
+    <li data-id="4">Регистрация</li>
+  </ul>
+
+</body>
+</html>
